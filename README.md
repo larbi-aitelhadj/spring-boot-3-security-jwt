@@ -4,16 +4,16 @@
 
 ## Description
 
-Cette application est un **backend Spring Boot 3** qui implémente:
+This application is a **Spring Boot 3 backend** that implements:
 
-- Authentification et autorisation avec **JWT (JSON Web Tokens)**
-- Gestion des **utilisateurs** (inscription et connexion)
-- Gestion des **produits** (CRUD : création, lecture, suppression)
-- Sécurisation des endpoints avec **Spring Security**
+- **Authentication and authorization** using **JWT (JSON Web Tokens)**.
+- **User management** (registration and login).
+- **Product management** (CRUD: create, read, delete).
+- **Endpoint security** with **Spring Security**
 
 ---
 
-## Technologies utilisées
+## Technologies Used
 
 - Java 21
 - Spring Boot 3.5.7
@@ -29,90 +29,90 @@ Cette application est un **backend Spring Boot 3** qui implémente:
 
 ## Architecture
 
-### Entités principales
+### Main Entities
 
-1. **User** : contient `id`, `username`, `password` et `role`
-2. **Product** : contient `id`, `name`, `price`, `description`
+1. **User** : contains `id`, `username`, `password` et `role`
+2. **Product** : contains `id`, `name`, `price`, `description`
 
 ### Services
 
-- `CustomerUserDetailsService` : implémente `UserDetailsService` pour Spring Security
-- `JwtService` : génération et validation des JWT
-- `ProductService` : logique métier pour les produits
+- `CustomerUserDetailsService` : implements `UserDetailsService` for Spring Security.
+- `JwtService` : handles JWT generation and validation.
+- `ProductService` : business logic for products.
 
-### Contrôleurs REST
+### REST Controllers
 
 - `AuthController` : endpoints `/api/auth/register` et `/api/auth/login`
-- `ProductController` : endpoints CRUD `/api/products/**`
+- `ProductController` : CRUD endpoints `/api/products/**`
 
-### Sécurité
+### Security
 
-- Filtre `JwtAuthenticationFilter` pour valider les JWT sur chaque requête
-- Configuration Spring Security dans `SpringConfig`
-- Passwords encodés avec **BCrypt**
+- **JwtAuthenticationFilter** validates JWTs on each request.
+- **Spring Security configuration** `SpringConfig`.
+- Passwords are encoded using **BCrypt**
 
 ---
 
-## Endpoints API
+## API Endpoints
 
-### Authentification
+### Authentication
 
-| Méthode | URL                   | Description                          |
-|---------|----------------------|--------------------------------------|
-| POST    | `/api/auth/register`  | Inscription d’un nouvel utilisateur |
-| POST    | `/api/auth/login`     | Connexion et génération d’un JWT    |
+| Method  | URL                   | Description               |
+|---------|-----------------------|---------------------------|
+| POST    | `/api/auth/register`  | Register a new user       |
+| POST    | `/api/auth/login`     | Login and generate a JWT  |
 
-### Produits
+### Products
 
-| Méthode | URL                                  | Description                       |
-|---------|-------------------------------------|-----------------------------------|
-| GET     | `/api/products/getAllProducts`       | Récupère tous les produits       |
-| GET     | `/api/products/getProductById`      | Récupère un produit par ID       |
-| POST    | `/api/products/createProduct`       | Crée un nouveau produit          |
-| DELETE  | `/api/products/deleteProductById/{id}` | Supprime un produit par ID      |
+| Method  | URL                                    | Description              |
+|---------|----------------------------------------|--------------------------|
+| GET     | `/api/products/getAllProducts`         | Retrieve all products    |
+| GET     | `/api/products/getProductById`         | Retrieve a product by ID |
+| POST    | `/api/products/createProduct`          | Create a new product     |
+| DELETE  | `/api/products/deleteProductById/{id}` | Delete a product by ID   |
 
 ---
 
 ## Tests
 
-- Tests unitaires avec JUnit 5 et Mockito
+- Unit tests with **JUnit** 5 and **Mockito**.
 
-- Tests d’intégration avec @SpringBootTest et @WebMvcTest
+- Integration tests with `@SpringBootTest` and `@WebMvcTest`.
 
-- Exemples: UserRepositoryTest, ProductControllerTest, JwtServiceTest
+- Examples: `UserRepositoryTest`, `ProductControllerTest`, `JwtServiceTest`.
 
 ---
 
-## Lancer le projet
+## Running the Project
 
-1. Cloner le dépôt :
+1. Clone the repository:
 
 ```
 git clone <URL_DU_REPO>
 cd spring-boot3-security-jwt
 ```
 
-2. Construire le projet :
+2. Build the project:
 
 ```
 mvn clean install
 ```
 
-3. Lancer l’application :
+3. Run the application:
 
 ```
 docker-compose up --build
 ```
 
-4. Accéder à l’API via http://localhost:8080
+4. Access the API via: http://localhost:8080
 
-## Exemple de requête JWT
+## Example JWT Request
 
 <img src="/screenshots/test.png" alt="Main Information" width="800" height="450">
 
 ---
 
-## Auteur
+## Author
 ```
 Larbi Aitelhadj
 💼 Software Engineer & Java Developer
