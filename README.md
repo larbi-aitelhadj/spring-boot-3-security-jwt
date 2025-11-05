@@ -19,7 +19,8 @@ This application is a **Spring Boot 3 backend** that implements:
 - Spring Boot 3.5.7
 - Spring Security
 - Spring Data JPA
-- JWT (io.jsonwebtoken:jjwt)
+- Spring Web
+- JWT (JSON Web Token)
 - PostgreSQL
 - Lombok
 - Maven
