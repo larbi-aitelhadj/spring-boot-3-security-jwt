@@ -1,0 +1,47 @@
+# Fichiers compilés et dossiers temporaires
+/target/
+/out/
+
+# IDEs
+/.idea/
+/*.iml
+*.iws
+*.ipr
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Fichiers générés par Spring Boot
+spring-boot-app.jar
+
+# Configuration locale
+application.properties
+application.yml
+
+# Maven
+.mvn/
+settings.xml
+
+# fichiers système
+.DS_Store
+Thumbs.db
+
+# Secrets et clés, à ne jamais commiter
+*.keystore
+*.jks
+*.pem
+*.p12

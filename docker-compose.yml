@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  spring-boot-3-security-jwt:
+    build: ./
+    container_name: spring-boot-3-security-jwt
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs/spring-boot-3-security-jwt:/app/logs
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - jwt-net
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432" # accessible depuis ton host à 5433
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - jwt-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - jwt-net
+
+networks:
+  jwt-net:
+    driver: bridge
+
+volumes:
+  pgdata:
