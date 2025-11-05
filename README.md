@@ -89,7 +89,7 @@ This application is a **Spring Boot 3 backend** that implements:
 1. Clone the repository:
 
 ```
-git clone <URL_DU_REPO>
+git clone git@github.com:larbi-aitelhadj/spring-boot-3-security-jwt.git
 cd spring-boot3-security-jwt
 ```
 
